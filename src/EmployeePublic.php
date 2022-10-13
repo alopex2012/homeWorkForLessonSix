@@ -1,8 +1,7 @@
 <?php
 
-namespace Lessons;
 
-class Employee_public
+class EmployeePublic
 {
     public $name;
     public $age;
@@ -30,11 +29,11 @@ class Employee_public
         return $this->salary . "$";
     }
 
-    public function showInfo()
+    public function getInfo()
     {
-        echo "Employee: <br/>";
-        echo "Name " . $this->getName() . "<br />";
-        echo "Age " . $this->getAge() . "<br />";
-        echo "Salary " . $this->getSalary() . "<br />";
+        return ("Employee: <br/>" .
+            "Name " . $this->getName() . "<br />" .
+            "Age " . $this->getAge() . "<br />" .
+            "Salary " . $this->getSalary() . "<br />");
     }
 }

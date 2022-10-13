@@ -29,14 +29,18 @@
     ",
     "</pre>";
 
-    $user1 = new Lessons\User();
-    $user1->setName("John");
-    $user1->setAge(25);
-    echo "Ім'я користувача: " . $user1->getName() . "<br />";
-    echo "Вік користувача: " . $user1->getAge() . "<br />";
-    $user1->setAge(70);
-    echo "Вік користувача: " . $user1->getAge() . "<br />";
-    //echo user1->isAgeCorrect(); //Виклик приватного метода ззовні призводит до помилки 
+    $user1 = new User(); //Створюємо нового юзера
+    $user1->setName("John"); //Встановлюємо юзеру ім'я
+    $user1->setAge(25); //Встановлюємо юзеру вік
+    echo "Ім'я користувача: " . $user1->getName() . "<br />"; //Викликаєм ім'я юзера та виводим на екран
+    echo "Вік користувача: " . $user1->getAge() . "<br />"; //Викликаєм вік юзера та виводим на екран
+    try {
+        $user1->setAge(70); //Спроба встановити юзеру вік, що не відповідає умовам 
+    } catch (Exception $ex) {
+        echo $ex->getMessage(); //Виводимо інформацію про виключення
+    }
+    echo "Вік користувача: " . $user1->getAge() . "<br />"; //Викликаєм вік юзера та виводим на екран
+    //echo user1->isAgeCorrect(); //Виклик приватного метода класа ззовні призводит до помилки 
 
     echo "<hr />";
 
@@ -48,10 +52,10 @@
     6.	Винесіть перевірку курсу в окремому приватному методі.
     ",
     "</pre>";
-    $student1 = new Lessons\Student("Rick", 5);
-    $student1->showInfo();
+    $student1 = new Student("Rick", 5); //Створюємо нового студента
+    echo $student1->getInfo(); //Виводимо інформацію про студента на екран
     $student1->transferToNextCourse(); //Спроба перевести студента на наступній курс
-    $student1->showInfo();
+    echo $student1->getInfo(); //Виводимо інформацію про студента на екран
 
     echo "<hr />";
 
@@ -64,10 +68,10 @@
     10.	Виведіть на екран суму зарплат створених вами користувачів.
     ",
     "</pre>";
-    $employee1 = new Lessons\Employee_public("Eric", 25, 1000);
-    $employee1->showInfo();
-    $employee2 = new Lessons\Employee_public("Kyle", 30, 2000);
-    $employee2->showInfo();
+    $employee1 = new EmployeePublic("Eric", 25, 1000); //Створюємо нового робітника
+    echo $employee1->getInfo(); //Виводимо інформацію про робітника на екран 
+    $employee2 = new EmployeePublic("Kyle", 30, 2000); //Створюємо нового робітника
+    echo $employee2->getInfo(); //Виводимо інформацію про робітника на екран
     echo "Сума зарплат працівників {$employee1->getName()} та {$employee2->getName()} складає: " . ($employee1->getSalary() + $employee2->getSalary()) . "$" . "<br />";
 
     echo "<hr />";
@@ -85,13 +89,17 @@
     ",
     "</pre>";
 
-    $employee3 = new Lessons\Employee_private();
-    $employee3->setName("Bob");
-    $employee3->setAge(63);
-    $employee3->setSalary(2800);
-    $employee3->showInfo();
-    $employee3->setAge(107); //Спроба присвоїти значення, що не відповідає умовам.
-    $employee3->showInfo();
+    $employee3 = new EmployeePrivate(); //Створюємо нового робітника
+    $employee3->setName("Bob"); //Встановлюємо робітнику ім'я
+    $employee3->setAge(63); //Встановлюємо робітнику вік
+    $employee3->setSalary(2800); //Встановлюємо робітнику зарплатню
+    echo $employee3->getInfo(); //Виводимо інформацію про робітника на екран
+    try {
+        $employee3->setAge(107); //Спроба присвоїти значення, що не відповідає умовам.
+    } catch (Exception $ex) {
+        echo $ex->getMessage(); //Виводимо інформацію про виключення
+    }
+    echo $employee3->getInfo(); //Виводимо інформацію про робітника на екран
 
     echo "<hr />";
     ?>

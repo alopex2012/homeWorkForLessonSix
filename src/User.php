@@ -1,6 +1,5 @@
 <?php
 
-namespace Lessons;
 
 class User
 {
@@ -17,7 +16,7 @@ class User
         if ($this->isAgeCorrect($age)) {
             $this->age = $age;
         } else {
-            echo "Вказане значення {$age} не відповідає умовам!" . "<br />";
+            throw new InvalidArgumentException("Вказане значення {$age} не відповідає умовам!" . "<br/>");
         }
     }
 

@@ -1,6 +1,5 @@
 <?php
 
-namespace Lessons;
 
 class Student
 {
@@ -35,10 +34,10 @@ class Student
         return ($this->course < 5);
     }
 
-    public function showInfo()
+    public function getInfo()
     {
-        echo "Student: <br/>";
-        echo "Name " . $this->getName() . "<br />";
-        echo "Course " . $this->getCourse() . "<br />";
+        return ("Student: <br/>" .
+            "Name " . $this->getName() . "<br />" .
+            "Course " . $this->getCourse() . "<br />");
     }
 }

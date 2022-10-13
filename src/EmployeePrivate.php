@@ -1,8 +1,7 @@
 <?php
 
-namespace Lessons;
 
-class Employee_private
+class EmployeePrivate
 {
     private $name;
     private $age;
@@ -18,7 +17,7 @@ class Employee_private
         if ($this->isAgeCorrect($age)) {
             $this->age = $age;
         } else {
-            echo "Вказане значення {$age} не відповідає умовам!" . "<br/>";
+            throw new InvalidArgumentException("Вказане значення {$age} не відповідає умовам!" . "<br/>");
         }
     }
 
@@ -47,11 +46,11 @@ class Employee_private
         return ($age >= 1 and $age < 100);
     }
 
-    public function showInfo()
+    public function getInfo()
     {
-        echo "Employee: <br/>";
-        echo "Name " . $this->getName() . "<br />";
-        echo "Age " . $this->getAge() . "<br />";
-        echo "Salary " . $this->getSalary() . "<br />";
+        return ("Employee: <br/>" .
+            "Name " . $this->getName() . "<br />" .
+            "Age " . $this->getAge() . "<br />" .
+            "Salary " . $this->getSalary() . "<br />");
     }
 }
